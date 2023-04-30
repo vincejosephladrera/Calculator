@@ -137,7 +137,14 @@ digits.forEach((digit) => {
 });
 
 const equals = document.querySelector("#equals");
-equals.addEventListener("click", equalsF);
+equals.addEventListener("click", () => {
+  if (text.length === 0) {
+    text = "";
+    screen[0].textContent = text;
+  } else {
+    equalsF();
+  }
+});
 
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", () => {
@@ -151,20 +158,20 @@ function operate(firstNumber, secondNumber, operator) {
     let answer = 0;
     answer = firstNumber * secondNumber;
     text = answer;
-    screen[0].innerText = text;
+    screen[0].textContent = text;
   } else if (operator === "/") {
     let answer = 0;
     answer = firstNumber / secondNumber;
     text = answer;
-    screen[0].innerText = text;
+    screen[0].textContent = text;
   } else if (operator === "+") {
     answer = firstNumber + secondNumber;
     text = answer;
-    screen[0].innerText = text;
+    screen[0].textContent = text;
   } else if (operator === "-") {
     answer = firstNumber - secondNumber;
     text = answer;
-    screen[0].innerText = text;
+    screen[0].textContent = text;
   }
 }
 
